@@ -237,6 +237,8 @@ function App() {
       .catch((error) => {
         if (error.message === "Failed to fetch")
           dispatch({ type: "dataReceived", payload: data.questions });
+        else if (error.code === "ECONNREFUSED")
+          dispatch({ type: "dataReceived", payload: data.questions });
         else dispatch({ type: "dataFailed" });
       });
   }, []);
