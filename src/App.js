@@ -227,7 +227,7 @@ function App() {
     0
   );
   useEffect(() => {
-    fetch("http://localhost:2025/questions")
+    fetch("https://efat1531/react-quiz-app/data/questions")
       .then((response) => {
         return response.json();
       })
@@ -235,8 +235,11 @@ function App() {
         dispatch({ type: "dataReceived", payload: data });
       })
       .catch((error) => {
-        // Only for server
-        dispatch({ type: "dataReceived", payload: data.questions });
+        if (error.message === "Failed to fetch") {
+          dispatch({ type: "dataReceived", payload: data.questions });
+        } else {
+          dispatch({ type: "dataFailed" });
+        }
       });
   }, []);
   const numOfQuestions = questions.length;
