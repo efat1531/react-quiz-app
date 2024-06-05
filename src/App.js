@@ -227,20 +227,14 @@ function App() {
     0
   );
   useEffect(() => {
-    fetch("https://efat1531/react-quiz-app/data/questions")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        dispatch({ type: "dataReceived", payload: data });
-      })
-      .catch((error) => {
-        if (error.message === "Failed to fetch") {
-          dispatch({ type: "dataReceived", payload: data.questions });
-        } else {
-          dispatch({ type: "dataFailed" });
-        }
-      });
+    // Simulate fetching data
+    setTimeout(() => {
+      if (data.questions.length === 0) {
+        dispatch({ type: "dataFailed" });
+      } else {
+        dispatch({ type: "dataReceived", payload: data.questions });
+      }
+    }, 2000);
   }, []);
   const numOfQuestions = questions.length;
   return (
