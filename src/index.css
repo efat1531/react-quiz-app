@@ -38,6 +38,8 @@ body {
 
 .main {
   width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .app-header {
@@ -46,6 +48,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .error {
